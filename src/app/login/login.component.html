@@ -1,1 +1,54 @@
-<p>login works!</p>
+<head>
+  <title> User Registratio</title>
+  <style>
+    .card-header{
+      background-color: rgb(57, 115, 182);
+      color:white;
+    }
+    .card-footer{
+      background-color: rgb(57, 115, 182);
+      color:white;
+    }
+  </style>
+</head>
+<body class = "container">
+  <div class="card text-center">
+    <div class="card-header">
+      USER REGISTRATION
+    </div>
+    <div class="card-body">
+      <input type = "text" id="username" placeholder="User Name"> 
+      <br>
+      <input type = "password" id = "password" placeholder = "Password">
+      <br>
+      <input type = "email" require placeholder = "Email">
+      <br>
+      <input type="radio" id="usertype" name="admin" value="admin">
+      <label for="admin">Admin</label>
+      <input type="radio" id="usertype" name="customer" value="customer">
+      <label for="customer">Customer</label>
+      <br>
+      <input type = "phone" require placeholder = "Phone">
+      <br>
+      <input type = "text" require placeholder = "Address">
+      
+    </div>
+    <div class="card-footer text-muted">
+      <input type = "submit" value = "Register" onclick="submit()">
+    </div>
+  </div>
+</body>
+
+<script>
+  function submit(){
+    var name = document.getElementById("username").value;
+    if (name == null){
+      alert("Please input user name");
+    }
+    var name = document.getElementById("username").value;
+    if (name == null){
+      alert("Please input user name");
+    }
+
+  }
+</script>

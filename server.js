@@ -25,7 +25,7 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 // Local database URI.
-const LOCAL_DATABASE = "mongodb+srv://admin:123@cluster0.d1guj.mongodb.net/node-mongo-express?retryWrites=true&w=majority";
+const LOCAL_DATABASE = "mongodb+srv://admin:123@cluster0.d1guj.mongodb.net/Fashionista?retryWrites=true&w=majority";
 // Local port.
 const LOCAL_PORT = 8080;
 
@@ -82,8 +82,8 @@ app.post("/api/products", function (req, res) {
 
     if (!product.name) {
         manageError(res, "Invalid product input", "Name is mandatory.", 400);
-    } else if (!product.brand) {
-        manageError(res, "Invalid product input", "Brand is mandatory.", 400);
+    } else if (!product.category) {
+        manageError(res, "Invalid product input", "Category is mandatory.", 400);
     } else {
         database.collection(PRODUCTS_COLLECTION).insertOne(product, function (err, doc) {
             if (err) {
