@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StatusService } from '../service/status.service';
+import { IUser } from '../service/user.model';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  title = 'node-express-angular';
+  status = 'DOWN';
+  createdUser: IUser = null;
 
-  ngOnInit(): void {
+  constructor(protected statusService: StatusService) { }
+
+  // Get the server status when starting the view.
+  ngOnInit() {
+    this.statusService
+      .getStatus()
+      .subscribe((result: any) => {
+        this.status = result.status;
+      });
+  }
+
+  // Get the new product created.
+  onCreatedUser(createdUser: IUser) {
+    this.createdUser = createdUser;
   }
 
 }
