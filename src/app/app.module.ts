@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { ProductListComponent } from './product/product-list/product-list.compon
     CreateUserComponent,
     ListUserComponent,
     UserComponent,
-    ProductListComponent
+    ProductListComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

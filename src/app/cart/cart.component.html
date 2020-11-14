@@ -1,0 +1,21 @@
+<h4>Cart:</h4>
+<table *ngIf="products.length > 0" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let product of products">
+      <tr *ngIf="product.category == category">
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td><img src={{product.imgurl}} style="width:50px;height:60px;"> </td>
+        <td>{{ product.price }}</td>
+        <td> <a class="addtoCartbutton" (click)="addToCart(product._id)">Add To Cart</a> </td>
+      </tr>
+  </tbody>
+</table>

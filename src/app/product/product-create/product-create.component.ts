@@ -13,6 +13,7 @@ export class ProductCreateComponent implements OnInit {
   productForm: FormGroup;
   name: string = '';
   category: string = '';
+  imgurl: string = '';
   price
   quantity
   error: boolean = false;
@@ -28,7 +29,7 @@ export class ProductCreateComponent implements OnInit {
 
   // Manage the submit action and create the new product.
   onSubmit() {
-    const product = new Product(this.productForm.value['name'], this.productForm.value['category'], this.productForm.value['price'],null);
+    const product = new Product(this.productForm.value['name'], this.productForm.value['category'], this.productForm.value['imgurl'],this.productForm.value['price'],null);
     this.productService.create(product).subscribe((result: IProduct) => {
       if (result === undefined) {
         this.error = true;
@@ -49,7 +50,9 @@ export class ProductCreateComponent implements OnInit {
     this.productForm = new FormGroup({
       name: new FormControl(this.name, Validators.required),
       category: new FormControl(this.category, Validators.required),
+      imgurl: new FormControl(this.imgurl,Validators.required),
       price: new FormControl(this.price, Validators.required),
+      
     });
   }
 
