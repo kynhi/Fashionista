@@ -20,10 +20,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    console.log(this.loginForm.value['name'])
-    console.log(this.loginForm.value['password'])
-
-
     if (this.loginService.authenticateLoginCredentials(this.loginForm.value['name'], this.loginForm.value['password'])) {
       alert("Logged In")
       this.router.navigate(["/homepage",{}]);

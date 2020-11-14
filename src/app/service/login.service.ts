@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { IUser, User } from './user.model';
 import { UserService } from './user.service';
 
@@ -7,7 +7,8 @@ import { UserService } from './user.service';
 })
 export class LoginService {
   currentUser: User;
-  isLogin = false;
+  loginUpdate: EventEmitter<User>= new EventEmitter();
+  isLogin= false;
   users: Array<User>;
   constructor(private userService: UserService) { 
     this.userService.get().subscribe((users: Array<IUser>) =>{
@@ -21,6 +22,7 @@ export class LoginService {
       if ((name == user.name) && (password == user.password)){
         this.currentUser = user;
         this.isLogin = true
+        this.loginUpdate.emit(user)
       }
     })
     return this.isLogin
