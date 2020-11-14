@@ -4,32 +4,35 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { IUser, User } from './user.model';
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService {
-  private usersUrl = '/api/users';
+    private usersUrl = '/api/users';
 
-  constructor(private http: HttpClient) { }
 
-  // Get products
-  get() {
-      return this.http.get<Array<IUser>>(this.usersUrl)
-  }
+    constructor(private http: HttpClient) { }
 
-  // Create product
-  create(user: User) {
-      return this.http.post<IUser>(this.usersUrl, user)
-  }
+    // Get products
+    get() {
+        return this.http.get<Array<IUser>>(this.usersUrl)
+    }
 
-  // Delete a product
-  delete(id: string) {
-      return this.http.delete<any>(`${this.usersUrl}/${id}`)
-  }
+    // Create product
+    create(user: User) {
+        return this.http.post<IUser>(this.usersUrl, user)
+    }
 
-  // Error handling
-  private error(error: any) {
-      let message = (error.message) ? error.message :
-          error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-      console.error(message);
-  }
+    // Delete a product
+    delete(id: string) {
+        return this.http.delete<any>(`${this.usersUrl}/${id}`)
+    }
+
+
+
+    // Error handling
+    private error(error: any) {
+        let message = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(message);
+    }
 }
