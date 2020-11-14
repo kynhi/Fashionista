@@ -1,5 +1,5 @@
 <h4>Cart:</h4>
-<table *ngIf="products.length > 0" class="table">
+<table *ngIf="cartProducts.length > 0" class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -9,13 +9,18 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody *ngFor="let product of products">
-      <tr *ngIf="product.category == category">
+  <tbody *ngFor="let product of cartProducts">
+      <tr>
         <td>{{ product.name }}</td>
         <td>{{ product.category }}</td>
         <td><img src={{product.imgurl}} style="width:50px;height:60px;"> </td>
         <td>{{ product.price }}</td>
-        <td> <a class="addtoCartbutton" (click)="addToCart(product._id)">Add To Cart</a> </td>
+        <td class = "remove" (click) = "removeProduct(product)"> Remove</td>
       </tr>
   </tbody>
 </table>
+<div *ngIf="cartProducts.length === 0" class="alert alert-info" role="info">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Information:</span>
+  Your Cart is empty.
+</div>

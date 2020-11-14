@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../service/product.model';
+import { CartService } from '../service/cart.service';
+import { IProduct, Product } from '../service/product.model';
 import { ProductService } from '../service/product.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class HomepageComponent implements OnInit {
   products: Array<IProduct> = [];
   category = 'Men Wear'
 
-  constructor(protected productService: ProductService) { }
+  constructor(protected productService: ProductService, private cartService: CartService) { }
 
   // Load all the products when starting the view.
   ngOnInit(): void {
@@ -26,8 +27,8 @@ export class HomepageComponent implements OnInit {
     // }
   }
 
-  addToCart(id:String){
-
+  addToCart(product:Product){
+    this.cartService.cartProducts.push(product)
   }
 
   categoryClick(event,newCategory){
